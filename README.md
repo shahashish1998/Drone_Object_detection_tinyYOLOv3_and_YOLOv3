@@ -31,10 +31,10 @@ Compile the code using the video
 
  
 - Create a file obj.names in your repository containing the names of your object to be identified. In this case, obj.names contains 
- - Person
- - Bike
- - Car
- - Building 
+    - Person
+    - Bike
+    - Car
+    - Building 
  
 
  
