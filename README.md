@@ -86,7 +86,8 @@ On your local computer, create a folder named cuDNN in your local folder darknet
 !chmod a+r /usr/local/cuda/include/cudnn.h
  ```
  Now we check the version we already installed. Can comment this line on future runs
-```!cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
+```
+!cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
 
 - Cloning and compiling Darknet. ONLY NEEDS TO BE RUN ON THE FIRST EXECUTION!!
