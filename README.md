@@ -1,6 +1,6 @@
 # Drone_Object_detection_tinyYOLOv3_and_YOLOv3
 
-## Developed by _Ashish Shah, Meghana Murali, Gagan Agarwal, Bharaneeshwar Bala, Minnu Elsa Thomas.
+## Developed by _Ashish Shah, Meghana Murali, Gagan Agarwal, Bharaneeshwar Bala, Minnu Elsa Thomas_.
 
 ### Goal - Develop a project to detect four objects (Person, Bike, Car, Building) in a video captured by drone. 
  
