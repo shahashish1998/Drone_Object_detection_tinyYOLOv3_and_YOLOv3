@@ -1,18 +1,18 @@
 # Drone_Object_detection_tinyYOLOv3_and_YOLOv3
 
-Developed by Ashish Shah, Meghana Murali, Gagan Agarwal, Bharaneeshwar Bala, Minnu Elsa Thomas.
+##Developed by Ashish Shah, Meghana Murali, Gagan Agarwal, Bharaneeshwar Bala, Minnu Elsa Thomas.
 
-Goal - Develop a project to detect four objects (Person, Bike, Car, Building) in a video captured by drone. 
+###Goal - Develop a project to detect four objects (Person, Bike, Car, Building) in a video captured by drone. 
  
-Approach - 
-Developing a YOLOv3 and tinyYOLOv3 model
-Creation of custom dataset
-Training the model on a custom dataset
-Implementation of the model to gain output
-Developing a GUI for front end
+####Approach - 
+- Developing a YOLOv3 and tinyYOLOv3 model
+- Creation of custom dataset
+- Training the model on a custom dataset
+- Implementation of the model to gain output
+- Developing a GUI for front end
  
-Download the cfg/yolov3-tiny-custom.cfg, cfg/yolov3-tiny-custom_last.weights and obj.data
-Compile the code using the video
+###Download the cfg/yolov3-tiny-custom.cfg, cfg/yolov3-tiny-custom_last.weights and obj.data
+###Compile the code using the video
 `!./darknet detector train "/obj.data" "darknet/cfg/yolov3-tiny-custom.cfg" "darknet/backup/yolov3-tiny-custom_last.weights" -dont_show`
  
  
@@ -84,11 +84,11 @@ On your local computer, create a folder named cuDNN in your local folder darknet
 `# We're unzipping the cuDNN files from your Drive folder directly to the VM CUDA folders
 !tar -xzvf gdrive/My\ Drive/darknet/cuDNN/cudnn-10.0-linux-x64-v7.5.0.56.tgz -C /usr/local/
 !chmod a+r /usr/local/cuda/include/cudnn.h
- 
+ ``
 # Now we check the version we already installed. Can comment this line on future runs
 !cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
  `
-##Cloning and compiling Darknet. ONLY NEEDS TO BE RUN ON THE FIRST EXECUTION!!
+#######Cloning and compiling Darknet. ONLY NEEDS TO BE RUN ON THE FIRST EXECUTION!!
 In this step, we'll clone the darknet repo and compile it.
 - Clone Repo
 - Compile Darknet
@@ -127,7 +127,7 @@ In this step, we'll clone the darknet repo and compile it.
 `
 
  
-###To start training use the command
+######To start training use the command
 ` 
 #use “path_of_your_darknet’’/files_as_used_below
 !./darknet detector train "/content/gdrive/My Drive/darknet/obj.data" "/content/gdrive/My Drive/darknet/yolov3-tiny-custom.cfg" "/content/gdrive/My Drive/darknet/yolov3-tiny.conv.15" -dont_show 
