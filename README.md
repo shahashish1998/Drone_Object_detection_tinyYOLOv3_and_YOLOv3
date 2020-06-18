@@ -1,15 +1,16 @@
 # Drone_Object_detection_tinyYOLOv3_and_YOLOv3
 
-##Developed by Ashish Shah, Meghana Murali, Gagan Agarwal, Bharaneeshwar Bala, Minnu Elsa Thomas.
+**Developed by Ashish Shah, Meghana Murali, Gagan Agarwal, Bharaneeshwar Bala, Minnu Elsa Thomas.
 
-###Goal - Develop a project to detect four objects (Person, Bike, Car, Building) in a video captured by drone. 
+_Goal - Develop a project to detect four objects (Person, Bike, Car, Building) in a video captured by drone. 
  
-####Approach - 
+_Approach -
 - Developing a YOLOv3 and tinyYOLOv3 model
 - Creation of custom dataset
 - Training the model on a custom dataset
 - Implementation of the model to gain output
 - Developing a GUI for front end
+ 
  
 ###Download the cfg/yolov3-tiny-custom.cfg, cfg/yolov3-tiny-custom_last.weights and obj.data
 ###Compile the code using the video
