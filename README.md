@@ -5,11 +5,11 @@
 ### Goal - Develop a project to detect four objects (Person, Bike, Car, Building) in a video captured by drone. 
  
 #### Approach -
-- Developing a YOLOv3 and tinyYOLOv3 model
-- Creation of custom dataset
-- Training the model on a custom dataset
-- Implementation of the model to gain output
-- Developing a GUI for front end
+1.) Developing a YOLOv3 and tinyYOLOv3 model
+2.) Creation of custom dataset
+3.) Training the model on a custom dataset
+4.) Implementation of the model to gain output
+5.) Developing a GUI for front end
  
  
 Download the cfg/yolov3-tiny-custom.cfg, cfg/yolov3-tiny-custom_last.weights and obj.data
