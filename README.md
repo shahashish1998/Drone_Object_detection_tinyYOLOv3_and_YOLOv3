@@ -14,7 +14,7 @@ Approach -
  
 Download the cfg/yolov3-tiny-custom.cfg, cfg/yolov3-tiny-custom_last.weights and obj.data
 Compile the code using the video
-`!./darknet detector train "/obj.data" "darknet/cfg/yolov3-tiny-custom.cfg" "darknet/backup/yolov3-tiny-custom_last.weights" -dont_show`
+```!./darknet detector train "/obj.data" "darknet/cfg/yolov3-tiny-custom.cfg" "darknet/backup/yolov3-tiny-custom_last.weights" -dont_show```
  
  
  
@@ -68,42 +68,40 @@ Compile the code using the video
 3.) Training the model on a custom dataset
 - In this case Google Colab was used for the project, any other notebook can also be used. Do use GPU from runtime in Colab.
 Only for Colab Notebook
-`# This cell imports the drive library and mounts your Google #Drive as a VM local drive. You can access your Drive files 
-``# using this path "/content/gdrive/My Drive/"
+```# This cell imports the drive library and mounts your Google #Drive as a VM local drive. You can access your Drive files 
+# using this path "/content/gdrive/My Drive/"
  
 from google.colab import drive
 drive.mount('/content/gdrive')
- `
+```
 - Save all the above downloaded and edited files in a folder named /darknet and see the content of it
-`# List the content of your local computer folder 
+```# List the content of your local computer folder 
 !ls -la "Path_of_darknet_repository/darknet"
-`
+```
 
 - Now, you need to download cuDNN from the Nvidia web site. You'll need to sign up on the site. Download cuDNN from Nvidia website. Right now, because we have CUDA 10.0 preinstalled in Colab runtime, you need download cuDNN v7.5.0.56 for CUDA v10.0 - the file is cudnn-10.0-linux-x64-v7.5.0.56.tgz
 On your local computer, create a folder named cuDNN in your local folder darknet. Copy the tgz file there
  
-`# We're unzipping the cuDNN files from your Drive folder directly to the VM CUDA folders
+```# We're unzipping the cuDNN files from your Drive folder directly to the VM CUDA folders
 !tar -xzvf gdrive/My\ Drive/darknet/cuDNN/cudnn-10.0-linux-x64-v7.5.0.56.tgz -C /usr/local/
 !chmod a+r /usr/local/cuda/include/cudnn.h
- ``
+ ```
  Now we check the version we already installed. Can comment this line on future runs
-!cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
- `
+```!cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2```
 Cloning and compiling Darknet. ONLY NEEDS TO BE RUN ON THE FIRST EXECUTION!!
 In this step, we'll clone the darknet repo and compile it.
 - Clone Repo
 - Compile Darknet
 - Copy compiled version to Drive
  
-`# Leave this code uncommented on the very first run of your notebook or if you ever need to recompile darknet again.
- Comment this code on the future runs.
+```# Leave this code uncommented on the very first run of your notebook or if you ever need to recompile darknet again.
+ #Comment this code on the future runs.
 !git clone https://github.com/kriyeng/darknet/
 %cd darknet
  
- Check the folder
+ #Check the folder
 !ls
  
- I have a branch where I have done the changes commented above
 !git checkout feature/google-colab
  
 #Compile Darknet
@@ -111,7 +109,7 @@ In this step, we'll clone the darknet repo and compile it.
  
 #Copies the Darknet compiled version to Google drive
 !cp ./darknet /content/gdrive/My\ Drive/darknet/bin/darknet
-`
+```
 
  
 - Copy the darknet compiled version from drive to the VM.
