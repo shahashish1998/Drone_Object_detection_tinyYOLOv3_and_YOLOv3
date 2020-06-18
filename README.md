@@ -13,7 +13,7 @@ Developing a GUI for front end
  
 Download the cfg/yolov3-tiny-custom.cfg, cfg/yolov3-tiny-custom_last.weights and obj.data
 Compile the code using the video
-'!./darknet detector train "/obj.data" "darknet/cfg/yolov3-tiny-custom.cfg" "darknet/backup/yolov3-tiny-custom_last.weights" -dont_show' 
+`!./darknet detector train "/obj.data" "darknet/cfg/yolov3-tiny-custom.cfg" "darknet/backup/yolov3-tiny-custom_last.weights" -dont_show`
  
  
  
@@ -30,26 +30,26 @@ Compile the code using the video
  
 
  
-Create a file obj.names in your repository containing the names of your object to be identified. In this case, obj.names contains 
-Person
-Bike
-Car
-Building 
+- Create a file obj.names in your repository containing the names of your object to be identified. In this case, obj.names contains 
+ - Person
+ - Bike
+ - Car
+ - Building 
  
 
  
-Create a new folder in your repository named as ‘backup’. Here, all your updated trained weights will be saved.
-Make an obj.data file in your repository with data:
-classes = ‘no. of classes or no. of object you want to detect’
-train  = ‘path to your repository’/train.txt
-valid  = ‘path to your repository’/test.txt
-names =‘path to your repository’/obj.names
-backup = ‘path to your repository’/backup
+- Create a new folder in your repository named as ‘backup’. Here, all your updated trained weights will be saved.
+- Make an obj.data file in your repository with data:
+ - classes = ‘no. of classes or no. of object you want to detect’
+ - train  = ‘path to your repository’/train.txt
+ - valid  = ‘path to your repository’/test.txt
+ - names =‘path to your repository’/obj.names
+ - backup = ‘path to your repository’/backup
  
 
  
-Now open the .cfg file and make these changes according to you.
-change line batch to batch=64
+- Now open the .cfg file and make these changes according to you.
+ - change line batch to batch=64
 change line subdivisions to subdivisions=64
 change line max_batches to (classes*2000 but not less than the number of training images, but not less than the number of training images and not less than 6000), f.e. max_batches=10000 if you train for 4 classes
 change line steps to 80% and 90% of max_batches, f.e. steps=8000,9000
