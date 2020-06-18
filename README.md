@@ -40,63 +40,61 @@ Compile the code using the video
  
 - Create a new folder in your repository named as ‘backup’. Here, all your updated trained weights will be saved.
 - Make an obj.data file in your repository with data:
- - classes = ‘no. of classes or no. of object you want to detect’
- - train  = ‘path to your repository’/train.txt
- - valid  = ‘path to your repository’/test.txt
- - names =‘path to your repository’/obj.names
- - backup = ‘path to your repository’/backup
+    - classes = ‘no. of classes or no. of object you want to detect’
+    - train  = ‘path to your repository’/train.txt
+    - valid  = ‘path to your repository’/test.txt
+    - names =‘path to your repository’/obj.names
+    - backup = ‘path to your repository’/backup
  
 
  
 - Now open the .cfg file and make these changes according to you.
- - change line batch to batch=64
-change line subdivisions to subdivisions=64
-change line max_batches to (classes*2000 but not less than the number of training images, but not less than the number of training images and not less than 6000), f.e. max_batches=10000 if you train for 4 classes
-change line steps to 80% and 90% of max_batches, f.e. steps=8000,9000
-set network size width=416 height=416 or any value multiple of 32
-change line classes=4 to your number of objects in each of 2 [yolo]-layers
-change [filters=27] to filters=(classes + 5)x3 in the 3 [convolutional] before each [yolo] layer, keep in mind that it only has to be the last [convolutional] before each of the [yolo] layers. 
-So if classes=1 then should be filters=18. If classes=2 then write filters=21.
+    - change line batch to batch=64
+    - change line subdivisions to subdivisions=64
+    - change line max_batches to (classes*2000 but not less than the number of training images, but not less than the number of training images and not less than 6000), f.e. max_batches=10000 if you train for 4 classes
+    - change line steps to 80% and 90% of max_batches, f.e. steps=8000,9000
+    - set network size width=416 height=416 or any value multiple of 32
+    - change line classes=4 to your number of objects in each of 2 [yolo]-layers
+    - change [filters=27] to filters=(classes + 5)x3 in the 3 [convolutional] before each [yolo] layer, keep in mind that it only has to be the last [convolutional] before each of the [yolo] layers. 
+    - So if classes=1 then should be filters=18. If classes=2 then write filters=21.
 
 		
  
-Creation of custom dataset:
-The aim of this project is detection of a person, motorcycle, car or building from a drone footage taken at a height of 70 meters. This leads to the necessity of creating a custom dataset. There are many tools available online to create annotations for custom dataset. 
-There are different ways to show the detected object like highlighting the outline of the object or drawing bounding boxes around it. Depending on this the dataset created has the labels. Here bounding boxes have been used. The features it considers are: class(i.e. which object it is), height, width, x and y coordinates.
+2.) Creation of custom dataset:
+- The aim of this project is detection of a person, motorcycle, car or building from a drone footage taken at a height of 70 meters. This leads to the necessity of creating a custom dataset. There are many tools available online to create annotations for custom dataset. 
+- There are different ways to show the detected object like highlighting the outline of the object or drawing bounding boxes around it. Depending on this the dataset created has the labels. Here bounding boxes have been used. The features it considers are: class(i.e. which object it is, height, width, x and y coordinates.
  
-Training the model on a custom dataset
-In this case Google Colab was used for the project, any other notebook can also be used. Do use GPU from runtime in Colab.
+3.) Training the model on a custom dataset
+- In this case Google Colab was used for the project, any other notebook can also be used. Do use GPU from runtime in Colab.
 Only for Colab Notebook
-# This cell imports the drive library and mounts your Google #Drive as a VM local drive. You can access your Drive files 
+`# This cell imports the drive library and mounts your Google #Drive as a VM local drive. You can access your Drive files 
 # using this path "/content/gdrive/My Drive/"
  
 from google.colab import drive
 drive.mount('/content/gdrive')
- 
-Save all the above downloaded and edited files in a folder named /darknet and see the content of it
-# List the content of your local computer folder 
+ `
+- Save all the above downloaded and edited files in a folder named /darknet and see the content of it
+`# List the content of your local computer folder 
 !ls -la "Path_of_darknet_repository/darknet"
+`
 
-
-Now, you need to download cuDNN from the Nvidia web site. You'll need to sign up on the site.
-Download cuDNN from Nvidia website
-Right now, because we have CUDA 10.0 preinstalled in Colab runtime, you need download cuDNN v7.5.0.56 for CUDA v10.0 - the file is cudnn-10.0-linux-x64-v7.5.0.56.tgz
+- Now, you need to download cuDNN from the Nvidia web site. You'll need to sign up on the site. Download cuDNN from Nvidia website. Right now, because we have CUDA 10.0 preinstalled in Colab runtime, you need download cuDNN v7.5.0.56 for CUDA v10.0 - the file is cudnn-10.0-linux-x64-v7.5.0.56.tgz
 On your local computer, create a folder named cuDNN in your local folder darknet. Copy the tgz file there
  
-# We're unzipping the cuDNN files from your Drive folder directly to the VM CUDA folders
+`# We're unzipping the cuDNN files from your Drive folder directly to the VM CUDA folders
 !tar -xzvf gdrive/My\ Drive/darknet/cuDNN/cudnn-10.0-linux-x64-v7.5.0.56.tgz -C /usr/local/
 !chmod a+r /usr/local/cuda/include/cudnn.h
  
 # Now we check the version we already installed. Can comment this line on future runs
 !cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
- 
-Cloning and compiling Darknet. ONLY NEEDS TO BE RUN ON THE FIRST EXECUTION!!
+ `
+##Cloning and compiling Darknet. ONLY NEEDS TO BE RUN ON THE FIRST EXECUTION!!
 In this step, we'll clone the darknet repo and compile it.
-Clone Repo
-Compile Darknet
-Copy compiled version to Drive
+- Clone Repo
+- Compile Darknet
+- Copy compiled version to Drive
  
-# Leave this code uncommented on the very first run of your notebook or if you ever need to recompile darknet again.
+`# Leave this code uncommented on the very first run of your notebook or if you ever need to recompile darknet again.
 # Comment this code on the future runs.
 !git clone https://github.com/kriyeng/darknet/
 %cd darknet
@@ -112,7 +110,7 @@ Copy compiled version to Drive
  
 #Copies the Darknet compiled version to Google drive
 !cp ./darknet /content/gdrive/My\ Drive/darknet/bin/darknet
-
+`
 
  
 Copy the darknet compiled version from drive to the VM.
