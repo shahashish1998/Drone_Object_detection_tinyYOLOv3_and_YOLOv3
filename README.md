@@ -137,7 +137,7 @@ In this step, we'll clone the darknet repo and compile it.
  
 #### 4. Implementation of the model to gain output. 
 Make a python code that take input video.(yolo.py)
-For live feed:
+- For live feed:
 ```
 def live_feed(obj_dec):
     # Load the weights and configutation to form the pretrained tinyYOLOv3 model
