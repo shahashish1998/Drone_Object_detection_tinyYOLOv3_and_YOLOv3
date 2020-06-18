@@ -67,6 +67,7 @@ Compile the code using the video
 #### 2.) Creation of custom dataset:
 - The aim of this project is detection of a person, motorcycle, car or building from a drone footage taken at a height of 70 meters. This leads to the necessity of creating a custom dataset. There are many tools available online to create annotations for custom dataset. 
 - There are different ways to show the detected object like highlighting the outline of the object or drawing bounding boxes around it. Depending on this the dataset created has the labels. Here bounding boxes have been used. The features it considers are: class(i.e. which object it is, height, width, x and y coordinates.
+- For data use link [DATASET](https://drive.google.com/open?id=1j3uSIHN8L88yyWTJViaUMt4BjVz22tCI)
  
 #### 3.) Training the model on a custom dataset
 - In this case Google Colab was used for the project, any other notebook can also be used. Do use GPU from runtime in Colab.
