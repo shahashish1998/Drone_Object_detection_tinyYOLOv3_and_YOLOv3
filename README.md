@@ -204,17 +204,17 @@ The other yolo_util python file will draw the boundary boxes at the selected obj
         # Generate the boxes, confidences, and classIDs
         boxes, confidences, classids = generate_boxes_confidences_classids(outs, obj_dec, height, width, FLAGS.confidence)
  `
-- Generate the confidence of each box
-`def generate_boxes_confidences_classids(outs, obj_dec, height, width, tconf):
+- Generate the confidence of each box.
+``def generate_boxes_confidences_classids(outs, obj_dec, height, width, tconf):
     boxes = []
     confidences = []
     classids = []
     for out in outs:
         for detection in out:
             #print (detection)
-            #a = input('GO!')
+            #a = input('GO!')`
             
-            # Get the scores, classid, and the confidence of the prediction
+ `           # Get the scores, classid, and the confidence of the prediction
             scores = detection[5:]
             classid = np.argmax(scores)
             confidence = scores[classid]
