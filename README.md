@@ -12,8 +12,8 @@ Approach -
 - Developing a GUI for front end
  
  
-###Download the cfg/yolov3-tiny-custom.cfg, cfg/yolov3-tiny-custom_last.weights and obj.data
-###Compile the code using the video
+Download the cfg/yolov3-tiny-custom.cfg, cfg/yolov3-tiny-custom_last.weights and obj.data
+Compile the code using the video
 `!./darknet detector train "/obj.data" "darknet/cfg/yolov3-tiny-custom.cfg" "darknet/backup/yolov3-tiny-custom_last.weights" -dont_show`
  
  
@@ -86,24 +86,24 @@ On your local computer, create a folder named cuDNN in your local folder darknet
 !tar -xzvf gdrive/My\ Drive/darknet/cuDNN/cudnn-10.0-linux-x64-v7.5.0.56.tgz -C /usr/local/
 !chmod a+r /usr/local/cuda/include/cudnn.h
  ``
-# Now we check the version we already installed. Can comment this line on future runs
+ Now we check the version we already installed. Can comment this line on future runs
 !cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
  `
-#######Cloning and compiling Darknet. ONLY NEEDS TO BE RUN ON THE FIRST EXECUTION!!
+Cloning and compiling Darknet. ONLY NEEDS TO BE RUN ON THE FIRST EXECUTION!!
 In this step, we'll clone the darknet repo and compile it.
 - Clone Repo
 - Compile Darknet
 - Copy compiled version to Drive
  
 `# Leave this code uncommented on the very first run of your notebook or if you ever need to recompile darknet again.
-# Comment this code on the future runs.
+ Comment this code on the future runs.
 !git clone https://github.com/kriyeng/darknet/
 %cd darknet
  
-# Check the folder
+ Check the folder
 !ls
  
-# I have a branch where I have done the changes commented above
+ I have a branch where I have done the changes commented above
 !git checkout feature/google-colab
  
 #Compile Darknet
