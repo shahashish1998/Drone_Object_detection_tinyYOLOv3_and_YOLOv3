@@ -87,7 +87,9 @@ On your local computer, create a folder named cuDNN in your local folder darknet
 !chmod a+r /usr/local/cuda/include/cudnn.h
  ```
  Now we check the version we already installed. Can comment this line on future runs
-```!cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2```
+```!cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
+```
+
 Cloning and compiling Darknet. ONLY NEEDS TO BE RUN ON THE FIRST EXECUTION!!
 In this step, we'll clone the darknet repo and compile it.
 - Clone Repo
@@ -117,31 +119,29 @@ In this step, we'll clone the darknet repo and compile it.
 - Copy the darknet file
 - Set execution permissions
  
-` 
+``` 
 # Copy the Darkent compiled version to the VM local drive
 !cp /content/gdrive/My\ Drive/darknet/bin/darknet ./darknet
  
 # Set execution permissions to Darknet
 !chmod +x ./darknet
-`
+```
 
  
-######To start training use the command
-` 
+#### To start training use the command
+```
 #use “path_of_your_darknet’’/files_as_used_below
 !./darknet detector train "/content/gdrive/My Drive/darknet/obj.data" "/content/gdrive/My Drive/darknet/yolov3-tiny-custom.cfg" "/content/gdrive/My Drive/darknet/yolov3-tiny.conv.15" -dont_show 
-`
+```
 
- 
- 
  
 4. Implementation of the model to gain output
 Make a python code that take input image.(yolo.py)
 For image input
-`if FLAGS.image_path is None and FLAGS.video_path is None:
+```if FLAGS.image_path is None and FLAGS.video_path is None:
         print ('Neither path to an image or path to video provided')
         print ('Starting Inference on Webcam')
-` `
+
     # Do inference with given image
     if FLAGS.image_path:
         try:
@@ -155,11 +155,11 @@ For image input
         finally:
             img, _, _, _, _ = infer_image(net, obj_dec, layer_names, height, width, img, colors, labels, FLAGS)
             cv.imwrite('image_out.png',img)
-`
+```
 
 			
 - For video input
-` if FLAGS.image_path is None and FLAGS.video_path is None:
+``` if FLAGS.image_path is None and FLAGS.video_path is None:
         print ('Neither path to an image or path to video provided')
         print ('Starting Inference on Webcam')
  
@@ -176,10 +176,10 @@ For image input
         finally:
             img, _, _, _, _ = infer_image(net, obj_dec, layer_names, height, width, img, colors, labels, FLAGS)
             cv.imwrite('image_out.png',img)
- `
+ ```
 The other yolo_util python file will draw the boundary boxes at the selected object.
 - Selection of layer
-`def infer_image(net, obj_dec, layer_names, height, width, img, colors, labels, FLAGS, 
+```def infer_image(net, obj_dec, layer_names, height, width, img, colors, labels, FLAGS, 
             boxes=None, confidences=None, classids=None, idxs=None, infer=True):
     
     if infer:
@@ -201,9 +201,9 @@ The other yolo_util python file will draw the boundary boxes at the selected obj
         
         # Generate the boxes, confidences, and classIDs
         boxes, confidences, classids = generate_boxes_confidences_classids(outs, obj_dec, height, width, FLAGS.confidence)
- `
+ ```
 - Generate the confidence of each box.
-``def generate_boxes_confidences_classids(outs, obj_dec, height, width, tconf):
+```def generate_boxes_confidences_classids(outs, obj_dec, height, width, tconf):
     boxes = []
     confidences = []
     classids = []
@@ -216,10 +216,10 @@ The other yolo_util python file will draw the boundary boxes at the selected obj
             scores = detection[5:]
             classid = np.argmax(scores)
             confidence = scores[classid]
- `       	
+ ```       	
  
 - Draw the labels and boxes of selective object
-`def draw_labels_and_boxes(img, obj_dec, boxes, confidences, classids, idxs, colors, labels):
+```def draw_labels_and_boxes(img, obj_dec, boxes, confidences, classids, idxs, colors, labels):
      If there are any detections
     if len(idxs) > 0:
         for i in idxs.flatten():
@@ -234,7 +234,7 @@ The other yolo_util python file will draw the boundary boxes at the selected obj
               cv.rectangle(img, (x, y), (x+w, y+h), color, 2)
               text = "{}: {:4f}".format(labels[classids[i]], confidences[i])
               cv.putText(img, text, (x, y-5), cv.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
- `
+ ```
 5. Developing a GUI:
  
 - For ease of use of the project, a GUI was created such that any person could operate it and detect the objects he/she wished to. The GUI was created using the Tkinter library in Python. 
