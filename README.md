@@ -222,7 +222,7 @@ The other yolo_util python file will draw the boundary boxes at the selected obj
  
 - Draw the labels and boxes of selective object
 `def draw_labels_and_boxes(img, obj_dec, boxes, confidences, classids, idxs, colors, labels):
-    # If there are any detections
+     If there are any detections
     if len(idxs) > 0:
         for i in idxs.flatten():
           if(labels[classids[i]] in obj_dec):
